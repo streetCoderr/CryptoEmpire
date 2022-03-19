@@ -13,7 +13,6 @@ const News = ({ simplified }) => {
   const [newsCategory, setNewsCategory] = useState('cryptocurrencies')
   const { data: cryptoNews, isFetching } = useGetCryptoNewsQuery({newsCategory, count})
   const { data: cryptoCoins } = useGetCryptosQuery(100)
-  console.log(cryptoNews)
   if (isFetching) return 'Loading...'
   return (
     <Row gutter={[24, 24]} className='divs'>

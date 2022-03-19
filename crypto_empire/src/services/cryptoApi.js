@@ -11,10 +11,16 @@ export const cryptoApi = createApi({
     reducerPath: 'cryptoApi',
     baseQuery: fetchBaseQuery({baseUrl}),
     endpoints: (builder) => ({
+        getCryptoDetails: builder.query({
+            query: (coinId) => createRequest(`/coin/${coinId}`)
+        }),
         getCryptos: builder.query({
             query: (count) => createRequest(`/coins?limit=${count}`)
         }),
+        getCryptoHistory: builder.query({
+            query: (coinid) => createRequest(`/coin/${coinid}/history`)
+        })
     }),
 })
 
-export const { useGetCryptosQuery } = cryptoApi;
+export const { useGetCryptoDetailsQuery, useGetCryptosQuery, useGetCryptoHistoryQuery } = cryptoApi;
